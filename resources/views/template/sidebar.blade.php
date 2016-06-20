@@ -96,33 +96,34 @@
                             <span class="fa fa-chevron-right"></span>Profil Restoran
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('manage/menu/'.Auth::user()->restodata->id) }}">
-                            <span class="fa fa-chevron-right"></span>Menu
-                        </a>
-                    </li>
+
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-chevron-right"></span> Menu</a>
+                            <ul>
+                                <li><a href="{{ url('manage/menu/'.Auth::user()->restodata->id) }}"><span class="fa fa-align-center"></span> List Menu</a></li>
+                                <li><a href="{{ url('manage/'.Auth::user()->restodata->id.'/new-menu') }}"><span class="fa fa-align-justify"></span> Tambah Menu</a></li>
+                            </ul>
+                        </li>
+
                         <li>
                             <a href="{{ url('manage/pesanan/'.Auth::user()->restodata->id) }}">
                                 <span class="fa fa-chevron-right"></span>Pesanan
                             </a>
                         </li>
-                    {{--@elseif()--}}
 
-                    @else
-
-                    @endif
-                     <!---->
-                    {{--<li><a href=""><span class="fa fa-chevron-right"></span>Data User</a></li>--}}
-                    <!--<li class="xn-openable">
-                        <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
-                        <ul>
-                            <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
-                            <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
-                        </ul>
-                    </li>-->
 
                 </ul>
             </li>
+
+
+            <li>
+                <a href="{{ url('api/pesan')}}">
+                    <span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Report</span></a>
+                </a>
+            </li>
+            @else
+
+            @endif
         @endif
     </ul>
     <!-- END X-NAVIGATION -->

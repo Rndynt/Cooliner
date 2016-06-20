@@ -11,7 +11,7 @@
     <!-- END META SECTION -->
 
     <!-- CSS INCLUDE -->
-    <link rel="stylesheet" type="text/css" id="theme" href="{{URL::asset('template_assets/css/theme-black.css')}}"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="{{URL::asset('template_assets/css/theme-brown.css')}}"/>
     <link rel="stylesheet" href="{{URL::asset('template_assets/restoicon/css/bistro.css')}}"></head>
     <!-- EOF CSS INCLUDE -->
 
@@ -76,6 +76,12 @@
 <script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/jquery/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/jquery/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/bootstrap/bootstrap.min.js')}}"></script>
+
+
+<script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/bootstrap/bootstrap-datepicker.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/bootstrap/bootstrap-file-input.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/bootstrap/bootstrap-select.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>
 <!-- END PLUGINS -->
 
 <!-- START THIS PAGE PLUGINS-->
@@ -96,6 +102,8 @@
 <script type='text/javascript' src='{{URL::asset('template_assets/js/plugins/bootstrap/bootstrap-datepicker.js')}}'></script>
 <script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/owl/owl.carousel.min.js')}}"></script>
 
+
+
 <script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('template_assets/js/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
@@ -113,8 +121,6 @@
 <script type="text/javascript" src="{{URL::asset('template_assets/js/demo_dashboard.js')}}"></script>
 <!-- END TEMPLATE -->
 <!-- END SCRIPTS -->
-
-
 
 </body>
 </html>

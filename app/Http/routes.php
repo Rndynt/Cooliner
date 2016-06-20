@@ -30,15 +30,9 @@ Route::group(['prefix' => 'api'], function() {
 
 
     Route::get('/testjoni', function(){
-
             return view('test');
     });
     Route::post('/test', 'RestoApiController@joni');
-
-    //Route::post('/resto/{id}/booking', 'RestoApiController@postBooking');
-    //Route::get('/resto/{id}/list-booking', 'RestoApiController@getlistBooking');
-
-
 
     /* TEST ROUTE */
     Route::get('test','RestoController@test');
@@ -58,12 +52,9 @@ Route::group(['prefix' => 'api'], function() {
 Route::group(['middleware' => 'web'],function(){
     Route::auth();
     Route::get('/', 'HomeController@getHome');
-//    Route::get('/', 'PagesController@dashboard');
-
 
 
     Route::group(['middleware' => ['role:admin']], function () {
-
         Route::get('resto','PagesController@data_resto');
         Route::get('user','PagesController@data_user');
         Route::get('resto/detail/{id}','RestoController@detail');
@@ -89,7 +80,11 @@ Route::group(['middleware' => 'web'],function(){
         Route::group(['prefix' => 'manage'], function() {
 
                 Route::get('profil/{id}', 'RestoController@profil_resto');
+
                 Route::get('menu/{id}', 'RestoController@manage_menu');
+                Route::get('{id}/new-menu', 'RestoController@new_menu');
+                Route::post('{id}/post/new-menu', 'RestoController@post_new_menu');
+
                 Route::get('pesanan/{id}', 'RestoController@manage_pesanan');
                 Route::post('pesanan/update/{id}', 'RestoController@update_pesanan');
         });

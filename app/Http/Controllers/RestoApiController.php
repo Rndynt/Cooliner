@@ -26,10 +26,7 @@ class RestoApiController extends Controller
 {
     public function getdataResto() {
         $resto = Restodata::orderBy('id', 'desc')->get();
-        //$resto = Restodata::with('restoimage')->get();
-        //echo $resto;
-        //$resto = User::with('restodata')->find(7);
-        //echo $user->restodata->resto_name;
+        //$restoo = Restoimage::orderBy('id')->get();
         return response()->json([
             'list_resto' => $resto
         ]);
@@ -37,8 +34,9 @@ class RestoApiController extends Controller
     public function getprofilResto($id){
         $profile = Restodata::with('restoimage')->findOrFail($id);
         //$profil = Restoimage::with('restodata')->where('restodata_id', $id)->get();
-        return response()->json($profile);
-        //return view('dataresto.profil', compact('profile','profil'));
+        return response()->json([
+            'detail_resto' => $profile
+        ]);
     }
     public function getmenuResto($id){
         //$menu

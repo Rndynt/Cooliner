@@ -47,18 +47,18 @@
                 <div class="pull-right push-up-10">
                     <div class="btn-group">
                         <button class="btn btn-primary"><span class="fa fa-pencil"></span> Edit</button>
-                        <button class="btn btn-primary"><span class="fa fa-trash-o"></span> Delete</button>
+                        <button class="btn btn-primary" href=""><span class="fa fa-trash-o"></span> Delete</button>
                     </div>
                 </div>
 
                 <div class="gallery" id="links">
 
                     @foreach($menus as $list_menu)
-                    <a class="gallery-item" href="{{ $list_menu->url }}" title="{{ $list_menu->name }}" data-gallery>
+                    <a class="gallery-item" href="{{ asset($list_menu->url)  }}" title="{{ $list_menu->name }}" data-gallery>
                         <div class="image">
-                            <img src="{{ $list_menu->url }}" alt="{{ $list_menu->id }}" width="200px" height="200px"/>
+                            <img src="{{ asset($list_menu->url) }}" alt="{{ $list_menu->id }}" width="200px" height="200px"/>
                             <ul class="gallery-item-controls">
-                                <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
+                                {{--<li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>--}}
                                 <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
                             </ul>
                         </div>

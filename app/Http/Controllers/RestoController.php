@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 //use App\Dataresto;
+use Illuminate\Http\Request;
 use App\Booking;
 use App\Bookingdetail;
 use App\Restodata;
@@ -12,11 +13,13 @@ use App\Restomenu;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-use Request;
+//use Request;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Requests\RestoRequest;
-use Laracasts\Flash\Flash;
+//use Illuminate\Http\UploadedFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use DB;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class RestoController extends Controller
@@ -87,6 +90,41 @@ class RestoController extends Controller
          $menus = Restomenu::with('restodata')->where('resto_id', $id)->get();
          return view('dataresto.dataMenu', compact('menus', 'nama_resto'));
     }
+
+    public function new_menu($id){
+        $cate = DB::table('menucategories')->get();
+        $hide = Restodata::findOrFail($id);
+        return view('dataresto.addMenu',compact('hide','cate'));
+    }
+
+    public function post_new_menu($id, Request $request){
+        $cate = DB::table('menucategories')->get();
+        $param = $request->all();
+        //return $param;
+        $fileName = $request->file('url')->getClientOriginalName();
+        $destinationpath = 'assets/menu-photos/';
+        $proses = $request->file('url')->move($destinationpath, $fileName);
+        if($request->hasFile('url')){
+            $obj = array(
+                'resto_id' =>$param['resto_id'],
+                'name' => $param['name'],
+                'price' =>$param['price'],
+                'url' => $destinationpath.$fileName,
+                'category_id' =>$param['category_id'],
+//                'file'=>$fileName,
+            );
+            //return $obj;
+            Restomenu::create($obj);
+            $url = Restomenu::where('resto_id', $id)->first();
+            return redirect('manage/menu/'.$url->resto_id);
+        }else{
+
+            return 'error jon....';
+        }
+//        $url = Restomenu::where('resto_id', $id)->first();
+//        Restomenu::create(Request::all());
+//        return redirect('manage/menu/'.$url->resto_id);
+    }
     //---- END MENU ----//
 
     //---- PESANAN -----//
@@ -106,7 +144,7 @@ class RestoController extends Controller
     public function update_pesanan($id, Request $request){
 
         $pesanan = Booking::where('resto_id', $id)->first();
-        $pesanan->update(Request::all());
+        $pesanan->update($request->all());
 
         return redirect('manage/pesanan/'.$pesanan->resto_id);
     }

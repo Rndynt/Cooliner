@@ -2,6 +2,49 @@
 
 @section('content')
 
+        <style>
+            /* MODAL */
+            .modal-content-my {
+                width: 50.5%;
+                -moz-border-radius: 0px;
+                -webkit-border-radius: 0px;
+                border-radius: 0px;
+                -moz-box-shadow: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                border-width: 5px;
+
+            }
+            .modal-header {
+                padding: 10px 10px 10px 15px;
+                line-height: 30px;
+                -moz-border-radius: 5px 5px 0px 0px;
+                -webkit-border-radius: 5px 5px 0px 0px;
+                border-radius: 5px 5px 0px 0px;
+                background: #F5F5F5;
+                border-color: #d5d5d5;
+            }
+            .modal-header .close {
+                margin-top: 5px;
+                margin-right: 5px;
+            }
+            .modal-title {
+                line-height: 30px;
+            }
+            .modal-body {
+                padding: 15px;
+                background-color: #f5f5f5;
+            }
+            .modal-footer {
+                background: #F5F5F5;
+                border-color: #D5D5D5;
+                padding: 10px 15px;
+                -moz-border-radius: 0px 0px 5px 5px;
+                -webkit-border-radius: 0px 0px 5px 5px;
+                border-radius: 0px 0px 5px 5px;
+            }
+            /* EOF MODAL */
+        </style>
 <!-- START RESPONSIVE TABLES -->
 <div class="row">
     <div class="col-md-12">
@@ -64,7 +107,7 @@
              </tr>
         </thead>
 
-    <tbody>
+    <tbody class="table-responsive">
         @foreach($pesanan as $list)
         <tr id="trow_1">
             <td>{{ $list->id }}</td>
@@ -103,7 +146,7 @@
             <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content-my">
                 <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Ubah Status Pesanan</h4>
@@ -119,10 +162,12 @@
                 <div class="form-group">
 
                 {!! Form::label('status','Ubah Status : ') !!}
-                {!! Form::text('status', null, ['class'=>'form-control']) !!}
+                {{--{!! Form::text('status', null, ['class'=>'form-control']) !!}--}}
+                 {!! Form::select('status', ['1' => 'Menunggu', '2' => 'Batal', '3' =>'Diterima'], ['class'=>'form-control']) !!}
+
                 </div>
 
-                {!! Form::submit('Update', ['class'=>'btn btn-danger form-control']) !!}
+                {!! Form::submit('Update', ['class'=>'btn btn-sm btn-danger form-control']) !!}
                 {!! Form::close() !!}
 
                 @include('errors.list')

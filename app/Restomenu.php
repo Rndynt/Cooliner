@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Restomenu extends Model
 {
     protected $table = 'restomenus';
+    protected $fillable = [
+        'resto_id',
+        'name',
+        'price',
+        'url',
+        'category_id'
+    ];
 
     public function restodata() {
         return $this->belongsTo('App\Restodata');
